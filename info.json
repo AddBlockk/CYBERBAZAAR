@@ -1,0 +1,148 @@
+{
+  "recommendations": [
+    {
+      "id": 1,
+      "title": "Диабло 2",
+      "description": "Серия видеоигр, где вы кликаете по врагам, пока они не умрут",
+      "image": "/recommendation1.jpg",
+      "price": 29.99
+    },
+    {
+      "id": 2,
+      "title": "Homefront: The Revolution",
+      "description": "Шутер от первого лица в открытом мире компании Dambuster Studios",
+      "image": "/recommendation2.jpg",
+      "price": 19.99
+    },
+    {
+      "id": 3,
+      "title": "Bulletstorm",
+      "description": "Игровой процесс предполагает использование большого арсенала боевых приёмов и крупного оружия.",
+      "image": "/recommendation3.jpg",
+      "price": 39.99
+    },
+    {
+      "id": 4,
+      "title": "World of Warcraft: The War Within",
+      "description": "Десятое дополнение к массовой многопользовательской ролевой онлайн-игре World of Warcraft",
+      "image": "/recommendation4.jpg",
+      "price": 9.99
+    },
+    {
+      "id": 5,
+      "title": "Dauntless",
+      "description": "Это кооперативная экшен-RPG, в которой игрокам предстоит сражаться с огромными монстрами",
+      "image": "/recommendation5.jpg",
+      "price": 49.99
+    },
+    {
+      "id": 6,
+      "title": "Hearthstone: Heroes of Warcraft",
+      "description": "Коллекционная карточная онлайн-игра по мотивам вселенной Warcraft",
+      "image": "/recommendation6.jpg",
+      "price": 24.99
+    },
+    {
+      "id": 7,
+      "title": "StarCraft",
+      "description": "Знаменитая научно-фантастическая стратегия",
+      "image": "/recommendation7.jpg",
+      "price": 34.99
+    },
+    {
+      "id": 8,
+      "title": "Overwatch",
+      "description": "Многопользовательская компьютерная игра в жанре геройского шутера",
+      "image": "/recommendation8.jpg",
+      "price": 29.99
+    },
+    {
+      "id": 9,
+      "title": "Warframe",
+      "description": "Игра в жанрах action/RPG и шутера от третьего лица",
+      "image": "/recommendation9.jpg",
+      "price": 14.99
+    },
+    {
+      "id": 10,
+      "title": "StarCraft: Remastered",
+      "description": "Компьютерная игра в жанре стратегии в реальном времени",
+      "image": "/recommendation10.jpg",
+      "price": 19.99
+    }
+  ],
+  "popularCategory": [
+    {
+      "id": 1,
+      "title": "Диабло 2",
+      "description": "Серия видеоигр, где вы кликаете по врагам, пока они не умрут",
+      "image": "/recommendation1.jpg",
+      "price": 29.99
+    },
+    {
+      "id": 3,
+      "title": "Bulletstorm",
+      "description": "Игровой процесс предполагает использование большого арсенала боевых приёмов и крупного оружия.",
+      "image": "/recommendation3.jpg",
+      "price": 39.99
+    },
+    {
+      "id": 5,
+      "title": "Dauntless",
+      "description": "Это кооперативная экшен-RPG, в которой игрокам предстоит сражаться с огромными монстрами",
+      "image": "/recommendation5.jpg",
+      "price": 49.99
+    },
+    {
+      "id": 7,
+      "title": "StarCraft",
+      "description": "Знаменитая научно-фантастическая стратегия",
+      "image": "/recommendation7.jpg",
+      "price": 34.99
+    },
+    {
+      "id": 9,
+      "title": "Warframe",
+      "description": "Игра в жанрах action/RPG и шутера от третьего лица",
+      "image": "/recommendation9.jpg",
+      "price": 14.99
+    }
+  ],
+  "newGames": [
+    {
+      "id": 2,
+      "title": "Homefront: The Revolution",
+      "description": "Шутер от первого лица в открытом мире компании Dambuster Studios",
+      "image": "/recommendation2.jpg",
+      "price": 19.99
+    },
+    {
+      "id": 4,
+      "title": "World of Warcraft: The War Within",
+      "description": "Десятое дополнение к массовой многопользовательской ролевой онлайн-игре World of Warcraft",
+      "image": "/recommendation4.jpg",
+      "price": 9.99
+    },
+    {
+      "id": 6,
+      "title": "Hearthstone: Heroes of Warcraft",
+      "description": "Коллекционная карточная онлайн-игра по мотивам вселенной Warcraft",
+      "image": "/recommendation6.jpg",
+      "price": 24.99
+    },
+    {
+      "id": 8,
+      "title": "Overwatch",
+      "description": "Многопользовательская компьютерная игра в жанре геройского шутера",
+      "image": "/recommendation8.jpg",
+      "price": 29.99
+    },
+    {
+      "id": 10,
+      "title": "StarCraft: Remastered",
+      "description": "Компьютерная игра в жанре стратегии в реальном времени",
+      "image": "/recommendation10.jpg",
+      "price": 19.99
+    }
+  ]
+}
