@@ -144,5 +144,28 @@
       "image": "/recommendation10.jpg",
       "price": 19.99
     }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "title": "Создатели Heroes of Might and Magic: Olden Era показали новый геймплей",
+      "date": "Сентябрь 14, 2024",
+      "comments": "0",
+      "image": "/news1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "GOG высмеял предупреждение Steam о покупке лицензии, а не игр",
+      "date": "Сентябрь 15, 2024",
+      "comments": "0",
+      "image": "/news2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Товарищи, вы нужны нам: разработчики Pioner что-то тизерят",
+      "date": "Сентябрь 17, 2024",
+      "comments": "0",
+      "image": "/news3.jpg"
+    }
   ]
 }

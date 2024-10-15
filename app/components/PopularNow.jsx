@@ -18,15 +18,11 @@ const PopularNow = () => {
         const menuSnapshot = await get(menuRef);
         const menuData = menuSnapshot.val() || {};
 
-        console.log("Data from Firebase Realtime Database:", menuData);
-
         // Преобразование объекта в массив
         const recommendationsArray = Object.keys(menuData).map((key) => ({
           id: key,
           ...menuData[key],
         }));
-
-        console.log("Recommendations Array:", recommendationsArray);
 
         // Получение URL-адресов изображений из Firebase Storage
         const recommendationsWithImages = await Promise.all(
@@ -49,7 +45,7 @@ const PopularNow = () => {
           })
         );
 
-        console.log("Recommendations with Images:", recommendationsWithImages);
+
 
         setData(recommendationsWithImages); // Установка преобразованных данных в состояние
       } catch (error) {
@@ -84,6 +80,7 @@ const PopularNow = () => {
               width={300}
               height={200}
               className="scale-[1.01] hover:scale-105 transition-all"
+              style={{ clipPath: "inset(0 0 5px 0)" }}
             />
             <div className="p-2 flex-grow">
               <h3 className="text-xl font-bold mt-2">{item.title}</h3>
