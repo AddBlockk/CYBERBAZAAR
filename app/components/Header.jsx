@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-[#000810]">
+    <div className="fixed top-0 w-full bg-[#000810] z-50">
       <div className="max-w-[1920px] m-auto h-[66px] flex justify-between items-center text-white px-[200px]">
         <Link href="/">
           <Image src={logo} alt="logo" />
@@ -87,7 +87,9 @@ const Header = () => {
               className="group-hover:text-[#0E86CA]"
             />
             {user ? (
-              <span className="group-hover:text-[#0E86CA]">{user.email}</span>
+              <span className="group-hover:text-[#0E86CA]">
+                {user.displayName}
+              </span>
             ) : (
               <span className="group-hover:text-[#0E86CA]">Логин</span>
             )}

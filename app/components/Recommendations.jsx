@@ -1,16 +1,17 @@
-"use client";
+// src/components/Recommendations.js
 import React, { useEffect, useState } from "react";
 import { get, ref } from "firebase/database";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
 import { database, storage } from "../firebase";
 import addCart from "../images/addCart.svg";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../lib/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../lib/cart/cartSlice";
 
 const Recommendations = () => {
   const [data, setData] = useState(null);
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,6 +61,10 @@ const Recommendations = () => {
     dispatch(addToCart(item));
   };
 
+  const handleRemoveFromCart = (item) => {
+    dispatch(removeFromCart(item));
+  };
+
   return (
     <div className="text-white max-w-[1440px] m-auto px-[20px]">
       <div className="flex justify-between items-center mb-[15px]">
@@ -103,12 +108,22 @@ const Recommendations = () => {
               <p className="text-yellow-500 font-bold text-[18px]">
                 ₽{item.price}
               </p>
-              <Image
-                src={addCart}
-                alt="addCart"
-                className="cursor-pointer"
-                onClick={() => handleAddToCart(item)}
-              />
+              {cartItems.some((cartItem) => cartItem.id === item.id) ? (
+                <button
+                  alt="removeCart"
+                  className="cursor-pointer bg-red-700 h-[32px] px-4"
+                  onClick={() => handleRemoveFromCart(item)}
+                >
+                  Убрать из корзины
+                </button>
+              ) : (
+                <Image
+                  src={addCart}
+                  alt="addCart"
+                  className="cursor-pointer"
+                  onClick={() => handleAddToCart(item)}
+                />
+              )}
             </div>
           </div>
         ))}

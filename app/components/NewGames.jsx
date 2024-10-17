@@ -95,7 +95,7 @@ const NewGames = () => {
               <h3 className="text-xl font-bold mt-2">{item.title}</h3>
               <p className="text-gray-400 mt-[10px]">{item.description}</p>
             </div>
-            <div className="flex justify-between my-[20px] p-2 mt-auto">
+            <div className="flex justify-between my-[20px] p-2 mt-auto items-center">
               <p className="text-yellow-500 font-bold text-[18px]">
                 ₽{item.price}
               </p>
