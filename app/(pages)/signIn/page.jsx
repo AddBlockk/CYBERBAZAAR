@@ -1,16 +1,59 @@
 "use client";
 import Link from "next/link";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie"; // Убедитесь, что js-cookie установлен
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Здесь вы можете добавить логику для обработки отправки формы
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const handleSignIn = async () => {
+    try {
+      const res = await signInWithEmailAndPassword(email, password);
+      if (res?.user) {
+        sessionStorage.setItem("user", "true");
+        setEmail("");
+        setPassword("");
+        Cookies.set("user", "true", { expires: 7 });
+        const userCookie = Cookies.get("user");
+        Swal.fire({
+          icon: "success",
+          title: "Успешный вход",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        router.push("/");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Ошибка",
+          text: "Повторите попытку",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (e) {
+      setError("Неверный email или пароль");
+      Swal.fire({
+        icon: "error",
+        title: "Ошибка",
+        text: "Неверный email или пароль",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    handleSignIn();
   };
 
   return (

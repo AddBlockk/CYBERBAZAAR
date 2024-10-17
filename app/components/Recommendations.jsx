@@ -5,25 +5,25 @@ import { getDownloadURL, ref as storageRef } from "firebase/storage";
 import { database, storage } from "../firebase";
 import addCart from "../images/addCart.svg";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../lib/cart/cartSlice";
 
 const Recommendations = () => {
   const [data, setData] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Функция для получения данных из базы данных
     const fetchData = async () => {
       try {
         const menuRef = ref(database, "recommendations");
         const menuSnapshot = await get(menuRef);
         const menuData = menuSnapshot.val() || {};
 
-        // Преобразование объекта в массив
         const recommendationsArray = Object.keys(menuData).map((key) => ({
           id: key,
           ...menuData[key],
         }));
 
-        // Получение URL-адресов изображений из Firebase Storage
         const recommendationsWithImages = await Promise.all(
           recommendationsArray.map(async (item) => {
             if (item.image) {
@@ -44,7 +44,7 @@ const Recommendations = () => {
           })
         );
 
-        setData(recommendationsWithImages); // Установка преобразованных данных в состояние
+        setData(recommendationsWithImages);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -55,6 +55,10 @@ const Recommendations = () => {
   if (!data) {
     return <div>Loading...</div>;
   }
+
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
 
   return (
     <div className="text-white max-w-[1440px] m-auto px-[20px]">
@@ -99,7 +103,12 @@ const Recommendations = () => {
               <p className="text-yellow-500 font-bold text-[18px]">
                 ₽{item.price}
               </p>
-              <Image src={addCart} alt="addCart" className="cursor-pointer" />
+              <Image
+                src={addCart}
+                alt="addCart"
+                className="cursor-pointer"
+                onClick={() => handleAddToCart(item)}
+              />
             </div>
           </div>
         ))}
