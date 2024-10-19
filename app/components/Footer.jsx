@@ -13,8 +13,8 @@ const Footer = () => {
           <Image src={logo} alt="logo" />
         </a>
       </div>
-      <div className="flex justify-center items-center max-w-[680px] m-auto pt-[100px]">
-        <div className="mr-[100px] flex flex-col gap-4">
+      <div className="flex justify-center items-center max-w-[680px] m-auto pt-[50px] flex-wrap">
+        <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <Image src={address} alt="" />
             <p>Адрес: улица Куликова, 42</p>
@@ -23,10 +23,10 @@ const Footer = () => {
             <Image src={email} alt="" />
             <p>Email: cyberbazaar@mail.ru</p>
           </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <Image src={phone} alt="" />
-          <p>Телефон: +79643636353</p>
+          <div className="flex items-center gap-3">
+            <Image src={phone} alt="" />
+            <p>Телефон: +79643636353</p>
+          </div>
         </div>
       </div>
       <div className="h-[1px] w-[100%] bg-[#0E86CA] absolute bottom-[100px] left-0"></div>

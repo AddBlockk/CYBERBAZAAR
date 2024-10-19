@@ -45,8 +45,6 @@ const PopularNow = () => {
           })
         );
 
-
-
         setData(recommendationsWithImages); // Установка преобразованных данных в состояние
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -61,7 +59,7 @@ const PopularNow = () => {
 
   return (
     <div className="text-white max-w-[1440px] m-auto px-[20px] pt-[70px]">
-      <div className="flex justify-between items-center mb-[15px]">
+      <div className="flex justify-between items-center mb-[15px] flex-wrap">
         <h2 className="text-[30px]">Популярно Сейчас</h2>
         <a href="#" className="flex gap-[10px] items-center">
           <span>Посмотреть все тренды</span>

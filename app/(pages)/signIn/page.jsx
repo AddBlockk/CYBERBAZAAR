@@ -5,7 +5,7 @@ import { auth } from "../../firebase";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie"; // Убедитесь, что js-cookie установлен
+import Cookies from "js-cookie";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +57,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md my-[200px]">
+    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md my-[200px] px-[10px]">
       <h2 className="text-2xl font-bold mb-6 text-center">Авторизация</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

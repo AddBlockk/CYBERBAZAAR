@@ -58,9 +58,9 @@ const NewGames = () => {
 
   return (
     <div className="text-white max-w-[1440px] m-auto px-[20px] pt-[70px]">
-      <div className="flex justify-between items-center mb-[15px]">
+      <div className="md:flex justify-between items-center mb-[15px]">
         <h2 className="text-[30px]">Новые игры</h2>
-        <ul className="flex gap-[54px] text-[14px]">
+        <ul className="flex gap-[54px] text-[14px] flex-wrap">
           <li>
             <a href="#">Virtual Reality</a>
           </li>

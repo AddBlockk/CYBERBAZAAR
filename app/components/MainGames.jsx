@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const MainGames = () => {
   return (
-    <div className="relative flex justify-center items-center pb-[200px] max-w-[1440px] m-auto">
+    <div className="hidden relative xl:flex justify-center items-center pb-[200px] max-w-[1440px] m-auto">
       <div className="flex gap-[30px] top-[-200px] absolute z-10">
         <a href="#" className="hover:scale-110 overflow-hidden transition-all">
           <Image src={hero1} alt="Игра 1" />

@@ -65,7 +65,7 @@ const LastNews = () => {
         {data.map((item) => (
           <div
             key={item.id}
-            className="rounded flex flex-col h-full overflow-hidden"
+            className="rounded flex flex-col h-full overflow-hidden cursor-pointer"
           >
             <Image
               src={item.image}

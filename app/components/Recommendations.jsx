@@ -67,9 +67,9 @@ const Recommendations = () => {
 
   return (
     <div className="text-white max-w-[1440px] m-auto px-[20px]">
-      <div className="flex justify-between items-center mb-[15px]">
+      <div className="md:flex justify-between items-center mb-[15px]">
         <h2 className="text-[30px]">Рекомендации</h2>
-        <ul className="flex gap-[54px] text-[14px]">
+        <ul className="flex gap-[54px] text-[14px] flex-wrap">
           <li>
             <a href="#">Virtual Reality</a>
           </li>
@@ -86,7 +86,7 @@ const Recommendations = () => {
           </li>
         </ul>
       </div>
-      <div className="md:grid grid-cols-1 flex flex-col items-center md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid items-center justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {data.map((item) => (
           <div
             key={item.id}
@@ -104,7 +104,7 @@ const Recommendations = () => {
               <h3 className="text-xl font-bold mt-2">{item.title}</h3>
               <p className="text-gray-400 mt-[10px]">{item.description}</p>
             </div>
-            <div className="flex justify-between my-[20px] p-2 mt-auto">
+            <div className="flex justify-between my-[20px] p-2 mt-auto flex-wrap">
               <p className="text-yellow-500 font-bold text-[18px]">
                 ₽{item.price}
               </p>
