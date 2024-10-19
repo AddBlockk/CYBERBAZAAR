@@ -104,7 +104,7 @@ const Header = () => {
               className="group-hover:text-[#0E86CA"
             />
             {user ? (
-              <span className="group-hover:text-[#0E86CA] text-white">
+              <span className="group-hover:text-[#0E86CA] truncate w-[100px] text-white">
                 {user.displayName}
               </span>
             ) : (
@@ -174,7 +174,7 @@ const Header = () => {
                   className="group-hover:text-[#0E86CA]"
                 />
                 {user ? (
-                  <span className="group-hover:text-[#0E86CA]">
+                  <span className="group-hover:text-[#0E86CA] truncate w-[200px] text-white">
                     {user.displayName}
                   </span>
                 ) : (
@@ -195,7 +195,7 @@ const Header = () => {
             {user && (
               <li>
                 <button onClick={handleSignOut}>
-                  <Image src={exit} alt="exit" className="w-[22px]" />
+                  <Image src={exit} alt="exit" className="w-[70px]" />
                 </button>
               </li>
             )}

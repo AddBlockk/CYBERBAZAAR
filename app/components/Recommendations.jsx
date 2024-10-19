@@ -1,5 +1,4 @@
-// src/components/Recommendations.js
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { get, ref } from "firebase/database";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
 import { database, storage } from "../firebase";
@@ -7,6 +6,7 @@ import addCart from "../images/addCart.svg";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../lib/cart/cartSlice";
+import LoadingSkeleton from "./Loading";
 
 const Recommendations = () => {
   const [data, setData] = useState(null);
@@ -53,10 +53,6 @@ const Recommendations = () => {
     fetchData();
   }, []);
 
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
   };
@@ -86,48 +82,54 @@ const Recommendations = () => {
           </li>
         </ul>
       </div>
-      <div className="grid items-center justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {data.map((item) => (
-          <div
-            key={item.id}
-            className="rounded bg-[#031632] flex flex-col max-w-[300px] h-full overflow-hidden"
-          >
-            <Image
-              src={item.image}
-              alt={item.title}
-              width={300}
-              height={200}
-              className="scale-[1.01] hover:scale-105 transition-all"
-              style={{ clipPath: "inset(0 0 5px 0)" }}
-            />
-            <div className="p-2 flex-grow">
-              <h3 className="text-xl font-bold mt-2">{item.title}</h3>
-              <p className="text-gray-400 mt-[10px]">{item.description}</p>
-            </div>
-            <div className="flex justify-between my-[20px] p-2 mt-auto flex-wrap">
-              <p className="text-yellow-500 font-bold text-[18px]">
-                ₽{item.price}
-              </p>
-              {cartItems.some((cartItem) => cartItem.id === item.id) ? (
-                <button
-                  alt="removeCart"
-                  className="cursor-pointer bg-red-700 h-[32px] px-4"
-                  onClick={() => handleRemoveFromCart(item)}
-                >
-                  Убрать из корзины
-                </button>
-              ) : (
+      <Suspense fallback={<LoadingSkeleton />}>
+        {data ? (
+          <div className="grid items-center justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {data.map((item) => (
+              <div
+                key={item.id}
+                className="rounded bg-[#031632] flex flex-col max-w-[300px] h-full overflow-hidden"
+              >
                 <Image
-                  src={addCart}
-                  alt="addCart"
-                  className="cursor-pointer"
-                  onClick={() => handleAddToCart(item)}
+                  src={item.image}
+                  alt={item.title}
+                  width={300}
+                  height={200}
+                  className="scale-[1.01] hover:scale-105 transition-all"
+                  style={{ clipPath: "inset(0 0 5px 0)" }}
                 />
-              )}
-            </div>
+                <div className="p-2 flex-grow">
+                  <h3 className="text-xl font-bold mt-2">{item.title}</h3>
+                  <p className="text-gray-400 mt-[10px]">{item.description}</p>
+                </div>
+                <div className="flex justify-between my-[20px] p-2 mt-auto flex-wrap">
+                  <p className="text-yellow-500 font-bold text-[18px]">
+                    ₽{item.price}
+                  </p>
+                  {cartItems.some((cartItem) => cartItem.id === item.id) ? (
+                    <button
+                      alt="removeCart"
+                      className="cursor-pointer bg-red-700 h-[32px] px-4"
+                      onClick={() => handleRemoveFromCart(item)}
+                    >
+                      Убрать из корзины
+                    </button>
+                  ) : (
+                    <Image
+                      src={addCart}
+                      alt="addCart"
+                      className="cursor-pointer"
+                      onClick={() => handleAddToCart(item)}
+                    />
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        ) : (
+          <LoadingSkeleton />
+        )}
+      </Suspense>
     </div>
   );
 };

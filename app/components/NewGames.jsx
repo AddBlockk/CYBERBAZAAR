@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { get, ref } from "firebase/database";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
 import { database, storage } from "../firebase";
 import addCart from "../images/addCart.svg";
 import Image from "next/image";
+import LoadingSkeleton from "./Loading";
 
 const NewGames = () => {
   const [data, setData] = useState(null);
@@ -52,10 +53,6 @@ const NewGames = () => {
     fetchData();
   }, []);
 
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="text-white max-w-[1440px] m-auto px-[20px] pt-[70px]">
       <div className="md:flex justify-between items-center mb-[15px]">
@@ -77,33 +74,43 @@ const NewGames = () => {
           </li>
         </ul>
       </div>
-      <div className="md:grid grid-cols-1 flex flex-col items-center md:grid-cols-3 lg:grid-cols-5 gap-4">
-        {data.map((item) => (
-          <div
-            key={item.id}
-            className="rounded bg-[#031632] flex flex-col max-w-[300px] h-full overflow-hidden"
-          >
-            <Image
-              src={item.image}
-              alt={item.title}
-              width={300}
-              height={200}
-              className="scale-[1.01] hover:scale-105 transition-all"
-              style={{ clipPath: "inset(0 0 5px 0)" }}
-            />
-            <div className="p-2 flex-grow">
-              <h3 className="text-xl font-bold mt-2">{item.title}</h3>
-              <p className="text-gray-400 mt-[10px]">{item.description}</p>
-            </div>
-            <div className="flex justify-between my-[20px] p-2 mt-auto items-center">
-              <p className="text-yellow-500 font-bold text-[18px]">
-                ₽{item.price}
-              </p>
-              <Image src={addCart} alt="addCart" className="cursor-pointer" />
-            </div>
+      <Suspense fallback={<LoadingSkeleton />}>
+        {data ? (
+          <div className="md:grid grid-cols-1 flex flex-col items-center md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {data.map((item) => (
+              <div
+                key={item.id}
+                className="rounded bg-[#031632] flex flex-col max-w-[300px] h-full overflow-hidden"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={300}
+                  height={200}
+                  className="scale-[1.01] hover:scale-105 transition-all"
+                  style={{ clipPath: "inset(0 0 5px 0)" }}
+                />
+                <div className="p-2 flex-grow">
+                  <h3 className="text-xl font-bold mt-2">{item.title}</h3>
+                  <p className="text-gray-400 mt-[10px]">{item.description}</p>
+                </div>
+                <div className="flex justify-between my-[20px] p-2 mt-auto items-center">
+                  <p className="text-yellow-500 font-bold text-[18px]">
+                    ₽{item.price}
+                  </p>
+                  <Image
+                    src={addCart}
+                    alt="addCart"
+                    className="cursor-pointer"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        ) : (
+          <LoadingSkeleton />
+        )}
+      </Suspense>
     </div>
   );
 };
